@@ -114,14 +114,8 @@
         var $button = $('.fbcn-call-button');
         var scrollTop = $(window).scrollTop();
 
-        // desktop-only check
-        if (getCurrentDeviceType() !== 'desktop') {
-            if (isScrolled) {
-                $button.removeClass('scrolled');
-                isScrolled = false;
-            }
-            return;
-        }
+        // Desktop check REMOVED - Enable for all devices
+        // if (getCurrentDeviceType() !== 'desktop') { ... }
 
         if (scrollTop > scrollThreshold && !isScrolled) {
             // User scrolled down - prepare for smooth contraction (same technique as expansion)
