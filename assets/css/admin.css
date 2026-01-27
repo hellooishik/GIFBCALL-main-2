@@ -403,29 +403,48 @@
     background: #fff;
 }
 
-/* Desktop Device Frame (Monitor Style) */
+/* Desktop Device Frame (Monitor Style - Icon Match) */
 .fbcn-preview-stage.device-desktop {
     width: 100%;
     max-width: 90%;
-    /* Match chrome width */
-    height: 450px;
-    /* Widescreen aspect */
-    /* Monitor Bezel: Thick sides, Very thick bottom (Chin) */
+    height: 480px;
+    /* Widescreen */
+    /* Outer Frame */
     border: 12px solid #2c3338;
     border-top: none;
-    border-bottom-width: 40px;
-    /* The Chin */
-    border-radius: 0 0 12px 12px;
+    /* Top handled by chrome */
+    border-bottom-width: 50px;
+    /* Thicker Chin */
+    border-radius: 0 0 20px 20px;
+    /* Smoother corners */
     background: #fff;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    /* Needed for stand? No, stand is pseudo on this, but lets check overflow properties */
+    /* If overflow hidden is needed for content, we might need to put stand on wrapper... 
+       But current CSS has pseudo on this element. 
+       If overflow is hidden, ::after/::before outside the box might be clipped?
+       Let's check. Yes, overflow: hidden clips pseudo elements outside the box. 
+       We need to move overflow handling to an inner container or keep overflow visible here.
+    */
+    overflow: visible;
     transition: width 0.3s ease;
-    margin-bottom: 60px;
-    /* Space for stand */
+    margin-bottom: 70px;
 }
 
-/* Browser Chrome (Top Bar / Monitor Top Bezel) */
+/* Inner screen container for clipping content */
+.fbcn-device-screen {
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+    /* Inner radius */
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: #fff;
+}
+
+/* Browser Chrome (Top Bar) */
 .fbcn-browser-chrome {
     display: none;
     /* Hidden by default, shown via JS for desktop */
@@ -433,9 +452,9 @@
     /* Monitor Bezel - Top part */
     border: 12px solid #2c3338;
     border-bottom: 1px solid #e0e0e0;
-    /* Inner divider */
-    border-radius: 12px 12px 0 0;
-    padding: 10px 16px;
+    border-radius: 20px 20px 0 0;
+    /* Matching top radius */
+    padding: 12px 20px;
     align-items: center;
     gap: 16px;
     width: 100%;
@@ -481,39 +500,60 @@
     position: relative;
 }
 
-/* Monitor Stand Neck */
+/* Monitor Stand Neck (Trapezoid) */
 .fbcn-preview-stage.device-desktop::before {
     content: "";
     position: absolute;
     bottom: -90px;
-    /* Position below chin */
+    /* Below chin (50px border + 40px gap) - wait, border is part of box model? 
+                      If overflow visible, bottom is edge of border-bottom. */
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 50px;
-    background: #2c3338;
-    /* Dark stand */
+    /* CSS Trapezoid */
+    border-bottom: 50px solid #2c3338;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    height: 0;
+    width: 80px;
+    /* narrower top */
     z-index: 1;
-    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
-    /* Trapezoid neck */
 }
 
-/* Monitor Stand Base */
+/* Monitor Stand Base (Rounded Rect) */
 .fbcn-preview-stage.device-desktop::after {
     content: "";
     position: absolute;
     bottom: -90px;
-    /* Match neck bottom */
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 8px;
-    /* Flat base */
+    width: 180px;
+    height: 10px;
     background: #2c3338;
-    border-radius: 4px;
+    border-radius: 6px;
     z-index: 1;
+}
+
+/* Camera Dot on Chin - We need a new place for this since ::before/::after are used.
+   We can put it on the .fbcn-browser-chrome? No that's top.
+   We can put it on .fbcn-mock-site check?
+   Or use box-shadow on the stand neck? No.
+   Let's add it to the .fbcn-device-frame?
+*/
+.fbcn-device-frame::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    /* Sitting in the chin area (Chin is 50px border on parent) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #4a5568;
+    /* Slightly lighter than black bezel */
+    border-radius: 50%;
+    z-index: 20;
     display: block;
-    /* Force display */
+    /* Ensure visibility */
 }
 
 /* Iframe Styling -> Mock Site Styling */
