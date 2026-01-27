@@ -403,11 +403,11 @@
 
 /* Desktop Device Frame (Monitor Style - Icon Match) */
 .fbcn-preview-stage.device-desktop {
-    width: 95%;
-    /* Much wider */
-    max-width: 1200px;
-    /* Allow large width */
-    height: 500px;
+    width: 100%;
+    max-width: 100%;
+    /* Fill container */
+    height: 600px;
+    /* Taller for better view */
     /* Outer Frame */
     border: 12px solid #2c3338;
     border-top: none;
@@ -417,19 +417,14 @@
     border-radius: 0 0 20px 20px;
     /* Smoother corners */
     background: #fff;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
     position: relative;
-    overflow: visible;
-    /* Needed for stand? No, stand is pseudo on this, but lets check overflow properties */
-    /* If overflow hidden is needed for content, we might need to put stand on wrapper... 
-       But current CSS has pseudo on this element. 
-       If overflow is hidden, ::after/::before outside the box might be clipped?
-       Let's check. Yes, overflow: hidden clips pseudo elements outside the box. 
-       We need to move overflow handling to an inner container or keep overflow visible here.
-    */
-    overflow: visible;
+    overflow: hidden;
+    /* Hide overflow of the frame itself */
     transition: width 0.3s ease;
     margin-bottom: 70px;
+    box-sizing: border-box;
+    /* Critical for alignment */
 }
 
 /* Inner screen container for clipping content */
@@ -441,6 +436,8 @@
     width: 100%;
     position: relative;
     background: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 /* Browser Chrome (Top Bar) */
@@ -458,8 +455,8 @@
     gap: 16px;
     width: 100%;
     /* Will match container width */
-    max-width: 90%;
-    /* Limit max width for monitor look */
+    max-width: 100%;
+    /* Fill container */
     box-sizing: border-box;
     /* Ensure border is included in width */
     position: relative;
@@ -503,13 +500,12 @@
 .fbcn-preview-stage.device-desktop::before {
     content: "";
     position: absolute;
-    bottom: -90px;
-    /* Below chin (50px border + 40px gap) - wait, border is part of box model? 
-                      If overflow visible, bottom is edge of border-bottom. */
+    bottom: -110px;
+    /* Adjust for taller chin/borders */
     left: 50%;
     transform: translateX(-50%);
     /* CSS Trapezoid */
-    border-bottom: 50px solid #2c3338;
+    border-bottom: 60px solid #2c3338;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     height: 0;
@@ -522,40 +518,22 @@
 .fbcn-preview-stage.device-desktop::after {
     content: "";
     position: absolute;
-    bottom: -90px;
+    bottom: -110px;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
+    width: 200px;
     height: 10px;
     background: #2c3338;
     border-radius: 6px;
     z-index: 1;
 }
 
-/* Camera Dot on Chin - We need a new place for this since ::before/::after are used.
-   We can put it on the .fbcn-browser-chrome? No that's top.
-   We can put it on .fbcn-mock-site check?
-   Or use box-shadow on the stand neck? No.
-   Let's add it to the .fbcn-device-frame?
-*/
+/* Camera Dot on Chin - Re-positioned */
 .fbcn-device-frame::after {
-    content: "";
-    position: absolute;
-    bottom: -30px;
-    /* Sitting in the chin area (Chin is 50px border on parent) */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: #4a5568;
-    /* Slightly lighter than black bezel */
-    border-radius: 50%;
-    z-index: 20;
-    display: block;
-    /* Ensure visibility */
+    content: none;
 }
 
-/* Iframe Styling -> Mock Site Styling */
+/* Force Scrollable Mock Site */
 .fbcn-mock-site {
     width: 100%;
     height: 100%;
