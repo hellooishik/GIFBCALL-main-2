@@ -348,22 +348,20 @@
 /* =========================
    PREVIEW STAGE
 ========================= */
+/* Wider Container */
 .fbcn-preview-stage-wrapper {
     flex: 1;
-    padding: 24px;
+    padding: 20px 0;
+    /* Vertical padding only, full width horiz */
     background: #f8f9fa;
-    /* Lighter background */
     display: flex;
     flex-direction: column;
-    /* Stack vertically for Desktop mode */
     justify-content: flex-start;
-    /* Start from top */
     align-items: center;
-    /* Center horizontally (for mobile & desktop) */
-    overflow: auto;
-    /* Removed heavy patterns for a cleaner look */
+    overflow: hidden;
+    /* Hide overflow to prevent scrollbars on wrapper */
     border-radius: 0 0 var(--fbcn-radius) var(--fbcn-radius);
-    min-height: 500px;
+    min-height: 600px;
 }
 
 /* Browser chrome - visible in desktop mode */
@@ -405,10 +403,11 @@
 
 /* Desktop Device Frame (Monitor Style - Icon Match) */
 .fbcn-preview-stage.device-desktop {
-    width: 100%;
-    max-width: 90%;
-    height: 480px;
-    /* Widescreen */
+    width: 95%;
+    /* Much wider */
+    max-width: 1200px;
+    /* Allow large width */
+    height: 500px;
     /* Outer Frame */
     border: 12px solid #2c3338;
     border-top: none;

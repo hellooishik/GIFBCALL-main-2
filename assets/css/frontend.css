@@ -4,142 +4,95 @@
  */
 
 /* Base call button styles */
+/* Base call button styles */
 .fbcn-call-button {
     position: fixed;
     z-index: 9999;
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 50px;
+    display: inline-flex;
+    /* Modern Flexbox */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* Space between icon and text */
+    padding: 14px 28px;
+    border-radius: 12px;
+    /* Modern "SaaS" radius, not full pill */
     text-decoration: none;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1.2;
+    font-weight: 600;
+    /* Slightly bolder */
+    font-size: 16px;
+    line-height: 1;
     text-align: center;
     cursor: pointer;
-    /* Split transitions for better control */
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Smooth Transitions for morphing */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    /* Softer shadow */
     border: none;
     white-space: nowrap;
     user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    overflow: hidden;
-    /* Responsive min-width will be set in media queries */
     box-sizing: border-box;
+    /* Initial width auto */
+    width: auto;
+    max-width: 300px;
+    /* Safety */
 }
 
 /* Text and icon styles */
 .fbcn-button-text {
     display: inline-block;
-    transition: opacity 0.25s ease, transform 0.25s ease;
     opacity: 1;
-    transform: translateX(0);
+    max-width: 200px;
+    /* Allow text */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .fbcn-button-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    font-size: 16px; /* Default desktop size */
-    line-height: 1;
+    position: static;
+    /* Normal flow, Icon + Text */
+    transform: none;
+    opacity: 1;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+    /* Ensure Icon appears before Text */
 }
 
 /* Scrolled state - transforms button into circle with icon */
 .fbcn-call-button.scrolled {
-    border-radius: 50%;
-    /* Padding will be handled by responsive media queries */
+    /* Circle Shape */
+    border-radius: 50% !important;
+    width: 56px !important;
+    /* Fixed dimension */
+    height: 56px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    /* Remove gap so icon centers */
+    justify-content: center;
 }
 
-/* For right-positioned buttons, we need to adjust to keep the right edge in place */
-.fbcn-call-button.fbcn-right {
-    /* This will be overridden by inline styles, but provides a base */
-    right: 20px;
-}
-
-.fbcn-call-button.fbcn-left {
-    /* This will be overridden by inline styles, but provides a base */
-    left: 20px;
-}
-
-/* Hide text and show icon when scrolled */
+/* Hide text when scrolled */
 .fbcn-call-button.scrolled .fbcn-button-text {
     opacity: 0;
-    transform: translateX(-20px);
-    transition-delay: 0s;
+    max-width: 0;
+    /* Collapse width */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .fbcn-call-button.scrolled .fbcn-button-icon {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    transition-delay: 0.25s;
-}
-
-/* Reverse delays when not scrolled for smooth reopening */
-.fbcn-call-button:not(.scrolled) .fbcn-button-text {
-    transition-delay: 0.25s;
-}
-
-.fbcn-call-button:not(.scrolled) .fbcn-button-icon {
-    transition-delay: 0s;
-}
-
-/* Control transition timing for smooth reverse animation */
-.fbcn-call-button:not(.scrolled) {
-    /* Delay width/height changes to let border-radius expand first */
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
-                height 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-                border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-                box-shadow 0.3s ease;
-}
-
-.fbcn-call-button.scrolled {
-    /* No delay when contracting to circle */
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s ease;
+    /* Icon remains visible and centers due to flex parent */
+    transform: scale(1.1);
+    /* Slight bump */
 }
 
 /* Hover and focus states */
-.fbcn-call-button:hover,
-.fbcn-call-button:focus {
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    outline: none;
-}
-
-/* Hover state for non-scrolled button */
-.fbcn-call-button:not(.scrolled):hover {
+.fbcn-call-button:hover {
     transform: translateY(-2px);
-}
-
-/* Hover state for scrolled button */
-.fbcn-call-button.scrolled:hover {
-    transform: scale(1.1);
-}
-
-/* Active state */
-.fbcn-call-button:active {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.fbcn-call-button:not(.scrolled):active {
-    transform: translateY(0);
-}
-
-.fbcn-call-button.scrolled:active {
-    transform: scale(1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Debug mode styles */
@@ -172,7 +125,7 @@
         min-width: 48px;
         min-height: 48px;
     }
-    
+
     .fbcn-call-button.fbcn-show-desktop.scrolled {
         padding: 12px !important;
         width: 48px !important;
@@ -193,14 +146,14 @@
         min-width: 42px;
         min-height: 42px;
     }
-    
+
     .fbcn-call-button.fbcn-show-tablet.scrolled {
         /* Perfect circle: equal padding on all sides */
         padding: 11px !important;
         width: 42px !important;
         height: 42px !important;
     }
-    
+
     /* Tablet icon size */
     .fbcn-call-button.fbcn-show-tablet .fbcn-button-icon {
         font-size: 14px;
@@ -220,14 +173,14 @@
         min-width: 40px;
         min-height: 40px;
     }
-    
+
     .fbcn-call-button.fbcn-show-mobile.scrolled {
         /* Perfect circle: equal padding on all sides */
         padding: 10px !important;
         width: 40px !important;
         height: 40px !important;
     }
-    
+
     /* Mobile icon size */
     .fbcn-call-button.fbcn-show-mobile .fbcn-button-icon {
         font-size: 12px;
@@ -268,12 +221,12 @@
     .fbcn-call-button {
         transition: none;
     }
-    
+
     .fbcn-button-text,
     .fbcn-button-icon {
         transition: none;
     }
-    
+
     .fbcn-call-button:hover,
     .fbcn-call-button:focus {
         transform: none;
@@ -468,19 +421,19 @@
         width: 95%;
         margin: 10px;
     }
-    
+
     .fbcn-modal-header {
         padding: 15px;
     }
-    
+
     .fbcn-modal-body {
         padding: 20px 15px;
     }
-    
+
     .fbcn-phone-number {
         font-size: 20px;
     }
-    
+
     .fbcn-modal-icon {
         font-size: 30px;
     }
@@ -491,7 +444,7 @@
     .fbcn-modal-content {
         border: 2px solid #000;
     }
-    
+
     .fbcn-copy-button {
         border: 2px solid currentColor;
     }
@@ -499,11 +452,12 @@
 
 /* Reduced motion support for modal */
 @media (prefers-reduced-motion: reduce) {
+
     .fbcn-modal-overlay,
     .fbcn-modal-content {
         transition: none;
     }
-    
+
     .fbcn-copy-button:hover {
         transform: none;
     }

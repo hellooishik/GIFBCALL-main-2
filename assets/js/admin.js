@@ -181,51 +181,60 @@
         var sideSpacing = device === 'mobile' ? '20px' : '40px';
 
         // Explicitly reconstruct content to ensure order AND match frontend DOM structure
+        // New Order: Icon + Text
         $preview.html(
-            '<span class="fbcn-button-text">' + buttonText + '</span>' +
-            '<span class="dashicons dashicons-phone fbcn-button-icon"></span>'
+            '<span class="dashicons dashicons-phone fbcn-button-icon"></span>' +
+            '<span class="fbcn-button-text">' + buttonText + '</span>'
         );
 
         // Update Styles - MATCHING FRONTEND.CSS EXACTLY
-        // frontend.css: .fbcn-call-button { display: inline-block; ... }
+        // frontend.css: .fbcn-call-button { display: inline-flex; ... }
         $preview.css({
             'background-color': buttonColor,
             'color': textColor,
-            'padding': device === 'mobile' ? '12px 24px' : '14px 32px', // Match standard padding
+            'padding': device === 'mobile' ? '12px 24px' : '14px 28px', // Match standard padding
             'font-size': device === 'mobile' ? '16px' : '18px',
-            'border-radius': '50px',
+            'border-radius': '12px', // Modern SaaS radius
             'top': topPercent + '%',
-            'font-weight': 'normal', // frontend.css says normal
-            'display': 'inline-block', // Match frontend default
+            'font-weight': '600',
+            'display': 'inline-flex', // Modern Flex
+            'align-items': 'center',
+            'justify-content': 'center',
+            'gap': '10px',
             'text-align': 'center',
             'position': 'absolute', // It is absolute in the preview container
-            'box-shadow': '0 4px 15px rgba(0, 0, 0, 0.2)',
+            'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.15)',
             'border': 'none',
-            'text-decoration': 'none'
-        });
-
-        // Icon Styles - MATCHING FRONTEND.CSS EXACTLY (Initial State)
-        // .fbcn-button-icon { position: absolute; top: 50%; left: 50%; transform: ... scale(0); opacity: 0; }
-        $preview.find('.fbcn-button-icon').css({
-            'color': textColor,
-            'font-size': device === 'mobile' ? '12px' : '16px', // Scaled slightly for preview context if needed, but frontend says 16px default
-            'position': 'absolute',
-            'top': '50%',
-            'left': '50%',
-            'transform': 'translate(-50%, -50%) scale(0)',
-            'opacity': '0',
-            'transition': 'all 0.25s ease',
+            'text-decoration': 'none',
             'width': 'auto',
             'height': 'auto'
+        });
+
+        // Icon Styles - MATCHING FRONTEND.CSS EXACTLY (Initial State: Visible, Static)
+        // .fbcn-button-icon { position: static; ... }
+        $preview.find('.fbcn-button-icon').css({
+            'color': textColor,
+            'font-size': device === 'mobile' ? '16px' : '18px',
+            'position': 'static', // Normal flow
+            'transform': 'none',
+            'opacity': '1',
+            'margin': '0',
+            'width': 'auto',
+            'height': 'auto',
+            'display': 'flex',
+            'align-items': 'center',
+            'justify-content': 'center'
         });
 
         // Text Styles - MATCHING FRONTEND.CSS EXACTLY
         $preview.find('.fbcn-button-text').css({
             'display': 'inline-block',
             'opacity': '1',
-            'transform': 'translateX(0)',
+            'transform': 'none',
             'text-decoration': 'none',
-            'line-height': '1.2'
+            'line-height': '1',
+            'max-width': '200px',
+            'margin': '0'
         });
 
         // Horizontal Position
