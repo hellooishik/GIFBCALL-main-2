@@ -637,19 +637,22 @@
 }
 
 .fbcn-button-icon {
-    /* Base Icon Style - Visible */
+    /* Base Icon Style - Hidden Initially */
     order: -1;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.4s ease;
+
+    /* Hidden properties */
     width: auto !important;
     height: auto !important;
     position: static !important;
-
-    transform: none !important;
-    opacity: 1 !important;
+    transform: scale(0) !important;
+    opacity: 0 !important;
     margin: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
 }
 
 .fbcn-button-text {
@@ -683,18 +686,21 @@
 
 #fbcn-live-button.scrolled .fbcn-button-text {
     opacity: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    max-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: none !important;
+    /* Remove from flow */
 }
 
 #fbcn-live-button.scrolled .fbcn-button-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
+    /* Show Icon on Scroll */
+    transform: scale(1.1) !important;
     opacity: 1 !important;
+    margin: 0 !important;
+    position: static !important;
+    max-width: 40px !important;
+    /* Reveal */
 }
 
 
