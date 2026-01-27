@@ -50,14 +50,18 @@
 .fbcn-button-icon {
     position: static;
     /* Normal flow, Icon + Text */
-    transform: none;
-    opacity: 1;
+    transform: scale(0);
+    opacity: 0;
+    max-width: 0;
+    margin: 0;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     order: -1;
     /* Ensure Icon appears before Text */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
 }
 
 /* Scrolled state - transforms button into circle with icon */
@@ -87,6 +91,9 @@
     /* Icon remains visible and centers due to flex parent */
     transform: scale(1.1);
     /* Slight bump */
+    opacity: 1;
+    max-width: 30px;
+    /* Allow width for icon */
 }
 
 /* Hover and focus states */

@@ -613,26 +613,22 @@
 
 /* Live Preview Button (Mock) */
 #fbcn-live-button {
-    position: absolute;
-    z-index: 100;
-    display: inline-flex;
+    /* Base Modern Style */
+    display: inline-flex !important;
+    /* Force flex */
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    gap: 10px;
+    border-radius: 12px !important;
+    /* Not bubbly */
+    padding: 14px 28px !important;
+    font-weight: 600 !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
     white-space: nowrap;
-    line-height: 1;
-    font-family: inherit;
-    cursor: default;
-    /* Not clickable in preview */
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.3s ease;
     overflow: hidden;
+    /* Reset JS inline override potential */
+    width: auto !important;
+    height: auto !important;
 }
 
 #fbcn-live-button:hover {
@@ -640,11 +636,45 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
+.fbcn-button-icon {
+    /* Icon Hidden Initially */
+    order: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    width: auto !important;
+    height: auto !important;
+    position: static !important;
+
+    transform: scale(0) !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    max-width: 0 !important;
+    /* Hide via width */
+}
+
+.fbcn-button-text {
+    display: inline-block;
+    opacity: 1;
+    max-width: 200px;
+    transition: all 0.4s ease;
+}
+
+/* Scrolled State */
 #fbcn-live-button.scrolled {
-    border-radius: 50% !important;
-    width: 48px !important;
-    height: 48px !important;
+    width: 56px !important;
+    height: 56px !important;
     padding: 0 !important;
+    border-radius: 50% !important;
+    /* Circle */
+    gap: 0 !important;
+    justify-content: center !important;
+    /* Center Horizontally */
+    align-items: center !important;
+    /* Center Vertically */
+    display: flex !important;
+    /* Ensure it's a flex container */
     right: 40px !important;
     /* Keep it consistent with desktop spacing */
 }
@@ -653,24 +683,8 @@
     transform: scale(1.1);
 }
 
-.fbcn-button-text {
-    display: inline-block;
-    /* Spacing handled by flex gap */
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    white-space: nowrap;
-}
-
 #fbcn-live-button.scrolled .fbcn-button-text {
     opacity: 0 !important;
-    transform: translateX(-20px) !important;
-    position: absolute;
-    /* Take out of flow */
-}
-
-.fbcn-button-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
