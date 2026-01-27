@@ -362,9 +362,10 @@
     min-height: 500px;
 }
 
-/* Browser chrome REMOVED per Visual QA (Debris) */
+/* Browser chrome - visible in desktop mode */
 .fbcn-browser-chrome {
-    display: none !important;
+    display: none;
+    /* Toggled by JS */
 }
 
 /* Mobile */
@@ -398,35 +399,73 @@
     background: #fff;
 }
 
-/* Desktop Device Frame (Monitor Style) - Fixed Ratio 16:10 */
+/* Desktop Device Frame (Professional Browser Style) */
 .fbcn-preview-stage.device-desktop {
     width: 100%;
-    height: 360px;
-    /* Reduced from 400px for better aspect visual */
-    border: 12px solid #2c3338;
-    border-bottom-width: 18px;
-    border-radius: 8px;
+    height: 400px;
+    /* Increased height for better view */
+    border: 1px solid #dcdcde;
+    /* Subtle border */
+    border-top: none;
+    /* Chrome handles top */
+    border-radius: 0 0 4px 4px;
     background: #fff;
-    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
-    /* Ensure content stays inside */
     transition: width 0.3s ease;
 }
 
-/* Monitor Stand (Base) */
-.fbcn-preview-stage.device-desktop::after {
-    content: "";
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 12px;
-    background: #dcdcde;
+/* Browser Chrome (Top Bar) */
+.fbcn-browser-chrome {
+    display: none;
+    /* Hidden by default, shown via JS for desktop */
+    background: #f0f0f1;
+    border: 1px solid #dcdcde;
+    border-bottom: 1px solid #e0e0e0;
     border-radius: 4px 4px 0 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    z-index: 100;
+    padding: 8px 16px;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.fbcn-browser-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.fbcn-browser-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+}
+
+.fbcn-browser-dots span:nth-child(1) {
+    background-color: #ef4444;
+}
+
+.fbcn-browser-dots span:nth-child(2) {
+    background-color: #f59e0b;
+}
+
+.fbcn-browser-dots span:nth-child(3) {
+    background-color: #22c55e;
+}
+
+.fbcn-browser-bar {
+    flex: 1;
+    height: 24px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Hide the pseudo-element stand */
+.fbcn-preview-stage.device-desktop::after {
+    display: none;
 }
 
 /* Iframe Styling -> Mock Site Styling */
@@ -437,7 +476,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    overflow-x: hidden;
 }
 
 .fbcn-mock-header {
@@ -523,6 +564,12 @@
     font-family: inherit;
     cursor: default;
     /* Not clickable in preview */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 #fbcn-live-button:hover {
@@ -530,9 +577,31 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
+#fbcn-live-button.scrolled {
+    border-radius: 50% !important;
+    width: 48px !important;
+    height: 48px !important;
+    padding: 0 !important;
+    right: 40px !important;
+    /* Keep it consistent with desktop spacing */
+}
+
+#fbcn-live-button.scrolled:hover {
+    transform: scale(1.1);
+}
+
 .fbcn-button-text {
     display: inline-block;
     /* Spacing handled by flex gap */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+}
+
+#fbcn-live-button.scrolled .fbcn-button-text {
+    opacity: 0 !important;
+    transform: translateX(-20px) !important;
+    position: absolute;
+    /* Take out of flow */
 }
 
 .fbcn-button-icon {
@@ -542,6 +611,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#fbcn-live-button.scrolled .fbcn-button-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1 !important;
 }
 
 

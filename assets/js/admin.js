@@ -100,6 +100,60 @@
         });
 
         // Note: Color pickers are handled in initColorPickers via their own callbacks
+
+        // Initialize scroll simulation for Desktop Preview
+        // We listen to the mock site container which handles the scrolling now
+        var isScrolled = false;
+        var scrollTimer;
+
+        $('.fbcn-mock-site').on('scroll', function () {
+            clearTimeout(scrollTimer);
+            var $container = $(this);
+
+            scrollTimer = setTimeout(function () {
+                var $stage = $('#fbcn-preview-stage');
+                // Only apply scroll effect in Desktop mode
+                if (!$stage.hasClass('device-desktop')) {
+                    // reset if needed
+                    if (isScrolled) {
+                        $('#fbcn-live-button').removeClass('scrolled');
+                        isScrolled = false;
+                    }
+                    return;
+                }
+
+                var scrollTop = $container.scrollTop();
+                var $button = $('#fbcn-live-button');
+                var scrollThreshold = 50;
+
+                if (scrollTop > scrollThreshold && !isScrolled) {
+                    isScrolled = true;
+
+                    // Smooth transition: fix width first
+                    var currentWidth = $button.outerWidth();
+                    $button.css('width', currentWidth + 'px');
+
+                    setTimeout(function () {
+                        $button.addClass('scrolled');
+                    }, 10);
+
+                } else if (scrollTop <= scrollThreshold && isScrolled) {
+                    isScrolled = false;
+
+                    // Smooth expansion
+                    // Remove class first to trigger expansion
+                    $button.removeClass('scrolled');
+
+                    // After transition, reset width to auto (handled by updatePreview usually, but we need to clear our fixed width)
+                    // The CSS transition is 0.3s
+                    setTimeout(function () {
+                        $button.css('width', '');
+                        // Re-run update preview to ensure correct auto-width/padding is restored if needed
+                        updatePreview();
+                    }, 350);
+                }
+            }, 10);
+        });
     }
 
     /**

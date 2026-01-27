@@ -561,6 +561,15 @@ class Settings {
                                                 <div class="fbcn-mock-line"></div>
                                                 <div class="fbcn-mock-line short"></div>
                                                 <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line short"></div>
+                                                <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line short"></div>
+                                                <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line"></div>
+                                                <div class="fbcn-mock-line short"></div>
+                                                <div class="fbcn-mock-line"></div>
                                             </div>
                                             
                                             <!-- Live Preview Button -->
