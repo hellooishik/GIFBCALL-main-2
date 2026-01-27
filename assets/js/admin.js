@@ -218,7 +218,8 @@
             'display': 'flex',
             'align-items': 'center',
             'justify-content': 'center',
-            'max-width': '0' /* Ensure it takes no space */
+            'max-width': '0', /* Ensure it takes no space */
+            'overflow': 'hidden' /* CRITICAL */
         });
 
         // Text Styles - Visible

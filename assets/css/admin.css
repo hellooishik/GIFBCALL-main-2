@@ -652,6 +652,8 @@
     margin: 0 !important;
     max-width: 0 !important;
     /* Hide via width */
+    overflow: hidden !important;
+    /* CRITICAL: Prevent icon from spilling out */
 }
 
 .fbcn-button-text {
