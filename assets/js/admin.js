@@ -204,22 +204,20 @@
             'height': 'auto'
         });
 
-        // Icon Styles - HIDDEN INITIALLY (Text Only Mode)
-        // Relies on CSS classes for transition to visible
+        // Icon Styles - MATCHING FRONTEND.CSS EXACTLY (Initial State: Visible, Static)
+        // .fbcn-button-icon { position: static; ... }
         $preview.find('.fbcn-button-icon').css({
             'color': textColor,
             'font-size': device === 'mobile' ? '16px' : '18px',
-            'position': 'static',
-            'transform': 'scale(0)', /* Hidden */
-            'opacity': '0', /* Hidden */
+            'position': 'static', // Normal flow
+            'transform': 'none',
+            'opacity': '1',
             'margin': '0',
             'width': 'auto',
             'height': 'auto',
             'display': 'flex',
             'align-items': 'center',
-            'justify-content': 'center',
-            'max-width': '0', /* Ensure it takes no space */
-            'overflow': 'hidden' /* CRITICAL */
+            'justify-content': 'center'
         });
 
         // Text Styles - Visible

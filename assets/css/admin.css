@@ -637,7 +637,7 @@
 }
 
 .fbcn-button-icon {
-    /* Icon Hidden Initially */
+    /* Base Icon Style - Visible */
     order: -1;
     display: flex;
     align-items: center;
@@ -647,13 +647,9 @@
     height: auto !important;
     position: static !important;
 
-    transform: scale(0) !important;
-    opacity: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
     margin: 0 !important;
-    max-width: 0 !important;
-    /* Hide via width */
-    overflow: hidden !important;
-    /* CRITICAL: Prevent icon from spilling out */
 }
 
 .fbcn-button-text {
