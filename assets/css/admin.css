@@ -401,30 +401,30 @@
     background: #fff;
 }
 
-/* Desktop Device Frame (Monitor Style - Icon Match) */
+/* Desktop Device Frame (Compact Monitor Icon Style) */
 .fbcn-preview-stage.device-desktop {
-    width: 100%;
+    width: 480px;
+    /* Fixed, small landscape width */
     max-width: 100%;
-    /* Fill container */
-    height: 600px;
-    /* Taller for better view */
+    height: 320px;
+    /* Compact height */
     /* Outer Frame */
-    border: 12px solid #2c3338;
+    border: 10px solid #2c3338;
+    /* Slightly thinner bezel for smaller scale */
     border-top: none;
-    /* Top handled by chrome */
-    border-bottom-width: 50px;
-    /* Thicker Chin */
-    border-radius: 0 0 20px 20px;
-    /* Smoother corners */
+    border-bottom-width: 36px;
+    /* Scaled down chin */
+    border-radius: 0 0 16px 16px;
     background: #fff;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    /* Hide overflow of the frame itself */
-    transition: width 0.3s ease;
-    margin-bottom: 70px;
+    transition: all 0.3s ease;
+    margin-bottom: 50px;
+    /* Space for stand */
     box-sizing: border-box;
-    /* Critical for alignment */
+    align-self: center;
+    /* Force centering in flex column */
 }
 
 /* Inner screen container for clipping content */
@@ -443,24 +443,22 @@
 /* Browser Chrome (Top Bar) */
 .fbcn-browser-chrome {
     display: none;
-    /* Hidden by default, shown via JS for desktop */
     background: #f0f0f1;
-    /* Monitor Bezel - Top part */
-    border: 12px solid #2c3338;
+    border: 10px solid #2c3338;
+    /* Match Frame Bezel */
     border-bottom: 1px solid #e0e0e0;
-    border-radius: 20px 20px 0 0;
-    /* Matching top radius */
-    padding: 12px 20px;
+    border-radius: 16px 16px 0 0;
+    padding: 8px 16px;
     align-items: center;
-    gap: 16px;
-    width: 100%;
-    /* Will match container width */
+    gap: 12px;
+    width: 480px;
+    /* Match Frame Width */
     max-width: 100%;
-    /* Fill container */
     box-sizing: border-box;
-    /* Ensure border is included in width */
     position: relative;
     z-index: 10;
+    align-self: center;
+    /* Center Chrome */
 }
 
 .fbcn-browser-dots {
@@ -496,35 +494,35 @@
     position: relative;
 }
 
-/* Monitor Stand Neck (Trapezoid) */
+/* Monitor Stand Neck */
 .fbcn-preview-stage.device-desktop::before {
     content: "";
     position: absolute;
-    bottom: -110px;
-    /* Adjust for taller chin/borders */
+    bottom: -80px;
+    /* Adjust for new chin */
     left: 50%;
     transform: translateX(-50%);
-    /* CSS Trapezoid */
-    border-bottom: 60px solid #2c3338;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
+    /* CSS Trapezoid - Scaled */
+    border-bottom: 40px solid #2c3338;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
     height: 0;
-    width: 80px;
-    /* narrower top */
+    width: 60px;
     z-index: 1;
 }
 
-/* Monitor Stand Base (Rounded Rect) */
+/* Monitor Stand Base */
 .fbcn-preview-stage.device-desktop::after {
     content: "";
     position: absolute;
-    bottom: -110px;
+    bottom: -80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 10px;
+    width: 140px;
+    /* Scaled base */
+    height: 8px;
     background: #2c3338;
-    border-radius: 6px;
+    border-radius: 4px;
     z-index: 1;
 }
 
