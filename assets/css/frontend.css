@@ -12,13 +12,14 @@
     /* Modern Flexbox */
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0;
     /* Space between icon and text */
     padding: 14px 28px;
     border-radius: 12px;
     /* Modern "SaaS" radius, not full pill */
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     /* Slightly bolder */
     font-size: 16px;
     line-height: 1;
