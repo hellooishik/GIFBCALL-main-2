@@ -358,8 +358,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow: hidden;
-    /* Hide overflow to prevent scrollbars on wrapper */
+    overflow: visible;
+    /* Show overflow for stand */
     border-radius: 0 0 var(--fbcn-radius) var(--fbcn-radius);
     min-height: 600px;
 }
@@ -498,32 +498,36 @@
 .fbcn-preview-stage.device-desktop::before {
     content: "";
     position: absolute;
-    bottom: -80px;
-    /* Adjust for new chin */
+    bottom: -60px;
+    /* Connected to chin */
     left: 50%;
     transform: translateX(-50%);
-    /* CSS Trapezoid - Scaled */
-    border-bottom: 40px solid #2c3338;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
+    /* CSS Trapezoid */
+    border-bottom: 60px solid #cbd5e1;
+    /* Lighter stand neck */
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
     height: 0;
-    width: 60px;
-    z-index: 1;
+    width: 50px;
+    z-index: 0;
+    /* Behind screen */
 }
 
 /* Monitor Stand Base */
 .fbcn-preview-stage.device-desktop::after {
     content: "";
     position: absolute;
-    bottom: -80px;
+    bottom: -68px;
+    /* Bottom of neck */
     left: 50%;
     transform: translateX(-50%);
-    width: 140px;
-    /* Scaled base */
+    width: 160px;
     height: 8px;
-    background: #2c3338;
+    background: #94a3b8;
+    /* Darker base */
     border-radius: 4px;
-    z-index: 1;
+    z-index: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Camera Dot on Chin - Re-positioned */
@@ -639,6 +643,8 @@
     /* Reset JS inline override potential */
     width: auto !important;
     height: auto !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* Match webpage font */
 }
 
 #fbcn-live-button:hover {
