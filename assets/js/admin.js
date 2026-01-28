@@ -186,8 +186,8 @@
         $preview.css({
             'background-color': buttonColor,
             'color': textColor,
-            'padding': device === 'mobile' ? '12px 24px' : '14px 28px', // Match standard padding
-            'font-size': device === 'mobile' ? '16px' : '18px',
+            'padding': device === 'mobile' ? '12px 24px' : '12px 20px', // Match standard padding (Desktop: 12px 20px)
+            'font-size': device === 'mobile' ? '16px' : '20px', // Match standard font size (Desktop: 20px)
             'border-radius': '12px', // Modern SaaS radius
             'top': topPercent + '%',
             'font-weight': '600',

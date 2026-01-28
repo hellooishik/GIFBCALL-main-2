@@ -636,8 +636,10 @@
     gap: 10px;
     border-radius: 12px !important;
     /* Not bubbly */
-    padding: 14px 28px !important;
+    padding: 12px 20px !important;
     font-weight: 400 !important;
+    font-size: 20px !important;
+    /* Match frontend desktop size */
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
     white-space: nowrap;
     overflow: hidden;
