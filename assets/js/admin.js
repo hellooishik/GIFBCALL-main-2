@@ -194,7 +194,7 @@
             'display': 'inline-flex', // Modern Flex
             'align-items': 'center',
             'justify-content': 'center',
-            'gap': '10px',
+            'gap': '0px', // Remove gap so hidden icon doesn't affect padding
             'text-align': 'center',
             'position': 'absolute', // It is absolute in the preview container
             'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.15)',

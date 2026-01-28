@@ -633,7 +633,8 @@
     /* Force flex */
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0 !important;
+    /* Remove gap to fix left padding issue (hidden icon was taking space) */
     border-radius: 12px !important;
     /* Not bubbly */
     padding: 12px 20px !important;
