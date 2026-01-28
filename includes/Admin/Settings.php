@@ -488,7 +488,7 @@ class Settings {
                     <span class="fbcn-badge-free">Free</span>
                 </div>
                 <div class="fbcn-meta">
-                    <span class="fbcn-version">v3.1.5</span>
+                    <span class="fbcn-version">v4.1.77</span>
                 </div>
             </div>
             
