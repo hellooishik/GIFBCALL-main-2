@@ -637,7 +637,7 @@
     /* Remove gap to fix left padding issue (hidden icon was taking space) */
     border-radius: 34px !important;
     /* Not bubbly */
-    padding: 12px 20px !important;
+    padding: 12px 16px !important;
     font-weight: 400 !important;
     font-size: 20px !important;
     /* Match frontend desktop size */

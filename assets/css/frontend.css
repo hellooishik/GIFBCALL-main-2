@@ -14,7 +14,7 @@
     justify-content: center;
     gap: 0;
     /* Space between icon and text */
-    padding: 14px 28px;
+    padding: 14px 20px;
     border-radius: 34px;
     /* Modern "SaaS" radius, not full pill */
     text-decoration: none;
@@ -129,7 +129,7 @@
         align-items: center;
         justify-content: center;
         font-size: 20px;
-        padding: 12px 20px;
+        padding: 12px 16px;
         /* Set explicit width for smooth transition */
         width: auto;
         min-width: 48px;
@@ -150,7 +150,7 @@
         align-items: center;
         justify-content: center;
         font-size: 18px;
-        padding: 10px 18px;
+        padding: 10px 14px;
         /* Set explicit width for smooth transition */
         width: auto;
         min-width: 42px;
@@ -177,7 +177,7 @@
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        padding: 8px 14px;
+        padding: 8px 12px;
         /* Set explicit width for smooth transition */
         width: auto;
         min-width: 40px;
