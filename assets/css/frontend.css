@@ -15,11 +15,11 @@
     gap: 0;
     /* Space between icon and text */
     padding: 14px 28px;
-    border-radius: 12px;
+    border-radius: 34px;
     /* Modern "SaaS" radius, not full pill */
     text-decoration: none;
     font-weight: 400;
-    font-family: inherit;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif;
     /* Use website default font */
     /* Slightly bolder */
     font-size: 16px;

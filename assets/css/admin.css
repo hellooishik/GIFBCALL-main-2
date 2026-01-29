@@ -635,7 +635,7 @@
     justify-content: center;
     gap: 0 !important;
     /* Remove gap to fix left padding issue (hidden icon was taking space) */
-    border-radius: 12px !important;
+    border-radius: 34px !important;
     /* Not bubbly */
     padding: 12px 20px !important;
     font-weight: 400 !important;
@@ -647,7 +647,7 @@
     /* Reset JS inline override potential */
     width: auto !important;
     height: auto !important;
-    font-family: inherit !important;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif !important;
     /* Use website default font */
 }
 
