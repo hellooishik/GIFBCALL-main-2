@@ -647,7 +647,7 @@
     /* Reset JS inline override potential */
     width: auto !important;
     height: auto !important;
-    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif !important;
+    font-family: inherit !important;
     /* Use website default font */
 }
 
