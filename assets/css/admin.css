@@ -37,7 +37,7 @@
    BASE LAYOUT
 ========================= */
 .fbcn-settings-page {
-    font-family: inherit;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif;
     color: var(--fbcn-text);
     padding-right: 20px;
     max-width: 1200px;
