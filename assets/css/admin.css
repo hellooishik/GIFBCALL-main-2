@@ -362,7 +362,7 @@
     /* Show overflow for stand */
     border-radius: 0 0 var(--fbcn-radius) var(--fbcn-radius);
     min-height: 600px;
-    font-family: inherit;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif;
 }
 
 /* Browser chrome - visible in desktop mode */
@@ -400,7 +400,7 @@
     overflow: hidden;
     position: relative;
     background: #fff;
-    font-family: inherit;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif;
 }
 
 /* Desktop Device Frame (Compact Monitor Icon Style) */
@@ -549,7 +549,7 @@
     overflow-y: auto;
     /* Allow vertical scrolling */
     overflow-x: hidden;
-    font-family: inherit;
+    font-family: 'Lata', Helvetica, Arial, Lucida, sans-serif;
 }
 
 /* Force scroll capability */
